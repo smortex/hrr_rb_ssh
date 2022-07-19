@@ -30,3 +30,4 @@ require "hrr_rb_ssh/authentication"
 require "hrr_rb_ssh/connection"
 require "hrr_rb_ssh/server"
 require "hrr_rb_ssh/client"
+require 'hrr_rb_ssh/open_ssl_compat'

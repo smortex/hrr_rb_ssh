@@ -9,6 +9,10 @@ RSpec.describe HrrRbSsh::Transport::EncryptionAlgorithm::Cast128Cbc do
   let(:encryption_algorithm){ described_class.new direction, iv, key }
   let(:data){ ('a'..'z').to_a.sample(block_size).join }
 
+  before(:each) do
+    skip("Encryption algorithm not supported in #{OpenSSL::VERSION} (#{OpenSSL::OPENSSL_VERSION})") if HrrRbSsh::OpenSSLCompat.library_version3?
+  end
+
   it "can be looked up in HrrRbSsh::Transport::EncryptionAlgorithm dictionary" do
     expect( HrrRbSsh::Transport::EncryptionAlgorithm[name] ).to eq described_class
   end
